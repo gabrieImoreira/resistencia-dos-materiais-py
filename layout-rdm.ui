@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>791</width>
+    <height>540</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>A3 - Resistências dos Materiais</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>571</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/newPrefix/download.png);
+background-image: url(:/newPrefix/guindaste.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>320</y>
+      <width>790</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>     Vc = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>Vbc (x = x2) = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="7">
+      <widget class="QLineEdit" name="mac1Output"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>    Ma = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="6">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>Mac (x = 0) =</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="7">
+      <widget class="QLineEdit" name="mac0Output"/>
+     </item>
+     <item row="2" column="4">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Vac (x = x1) = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Vac (x = 0) = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>     Vb = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="vaInput"/>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="maOutput"/>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="yOutput"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="x1Input"/>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLineEdit" name="vcOutput"/>
+     </item>
+     <item row="1" column="5">
+      <widget class="QLineEdit" name="vac0Output"/>
+     </item>
+     <item row="3" column="4">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>Vbc (x = 0) = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Força Cortante:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>     x1 = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="7">
+      <widget class="QLineEdit" name="mbc0Output"/>
+     </item>
+     <item row="4" column="7">
+      <widget class="QLineEdit" name="mbc1Output"/>
+     </item>
+     <item row="4" column="6">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>Mbc (x = x2) =</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Reações de apoio:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>    x2 = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="QLineEdit" name="vac1Output"/>
+     </item>
+     <item row="2" column="6">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>Mac (x = x1) =</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="5">
+      <widget class="QLineEdit" name="vbc0Output"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Insira os valores:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="5">
+      <widget class="QLineEdit" name="vbc1Output"/>
+     </item>
+     <item row="3" column="6">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>Mbc (x = 0) =</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>     Va = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>     Y = </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="vbInput"/>
+     </item>
+     <item row="0" column="7">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>Momento Fletor:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="x2Input"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="btnCalcular">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>490</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Calcular</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../../Downloads/test.qrc"/>
+ </resources>
+ <connections/>
+</ui>
