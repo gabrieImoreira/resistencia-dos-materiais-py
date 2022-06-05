@@ -34,9 +34,9 @@ background-image: url(:/newPrefix/guindaste.png);</string>
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>320</y>
-      <width>790</width>
+      <width>803</width>
       <height>161</height>
      </rect>
     </property>
@@ -44,34 +44,34 @@ background-image: url(:/newPrefix/guindaste.png);</string>
      <item row="4" column="4">
       <widget class="QLabel" name="label_15">
        <property name="text">
-        <string>Vbc (x = x2) = </string>
+        <string>Vcb (x = x2) = </string>
        </property>
       </widget>
      </item>
      <item row="2" column="7">
-      <widget class="QLineEdit" name="mac1Output"/>
+      <widget class="QLineEdit" name="mca1Output"/>
      </item>
      <item row="1" column="6">
       <widget class="QLabel" name="label_16">
        <property name="text">
-        <string>Mac (x = 0) =</string>
+        <string>Mca (x = 0) =</string>
        </property>
       </widget>
      </item>
      <item row="1" column="7">
-      <widget class="QLineEdit" name="mac0Output"/>
+      <widget class="QLineEdit" name="mca0Output"/>
      </item>
      <item row="2" column="4">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>Vac (x = x1) = </string>
+        <string>Vca(x = x1) = </string>
        </property>
       </widget>
      </item>
      <item row="1" column="4">
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>Vac (x = 0) = </string>
+        <string>Vca (x = 0) = </string>
        </property>
       </widget>
      </item>
@@ -89,12 +89,12 @@ background-image: url(:/newPrefix/guindaste.png);</string>
       <widget class="QLineEdit" name="x1Input"/>
      </item>
      <item row="1" column="5">
-      <widget class="QLineEdit" name="vac0Output"/>
+      <widget class="QLineEdit" name="vca0Output"/>
      </item>
      <item row="3" column="4">
       <widget class="QLabel" name="label_14">
        <property name="text">
-        <string>Vbc (x = 0) = </string>
+        <string>Vcb (x = 0) = </string>
        </property>
       </widget>
      </item>
@@ -112,16 +112,16 @@ background-image: url(:/newPrefix/guindaste.png);</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="7">
-      <widget class="QLineEdit" name="mbc0Output"/>
-     </item>
      <item row="4" column="7">
-      <widget class="QLineEdit" name="mbc1Output"/>
+      <widget class="QLineEdit" name="mcb1Output"/>
+     </item>
+     <item row="3" column="7">
+      <widget class="QLineEdit" name="mcb0Output"/>
      </item>
      <item row="4" column="6">
       <widget class="QLabel" name="label_19">
        <property name="text">
-        <string>Mbc (x = x2) =</string>
+        <string>Mcb (x = x2) =</string>
        </property>
       </widget>
      </item>
@@ -140,17 +140,20 @@ background-image: url(:/newPrefix/guindaste.png);</string>
       </widget>
      </item>
      <item row="2" column="5">
-      <widget class="QLineEdit" name="vac1Output"/>
+      <widget class="QLineEdit" name="vca1Output"/>
      </item>
      <item row="2" column="6">
       <widget class="QLabel" name="label_17">
        <property name="text">
-        <string>Mac (x = x1) =</string>
+        <string>Mca (x = x1) =</string>
        </property>
       </widget>
      </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="x2Input"/>
+     </item>
      <item row="3" column="5">
-      <widget class="QLineEdit" name="vbc0Output"/>
+      <widget class="QLineEdit" name="vcb0Output"/>
      </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label_13">
@@ -160,12 +163,12 @@ background-image: url(:/newPrefix/guindaste.png);</string>
       </widget>
      </item>
      <item row="4" column="5">
-      <widget class="QLineEdit" name="vbc1Output"/>
+      <widget class="QLineEdit" name="vcb1Output"/>
      </item>
      <item row="3" column="6">
       <widget class="QLabel" name="label_18">
        <property name="text">
-        <string>Mbc (x = 0) =</string>
+        <string>Mcb (x = 0) =</string>
        </property>
       </widget>
      </item>
@@ -186,27 +189,14 @@ background-image: url(:/newPrefix/guindaste.png);</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="x2Input"/>
-     </item>
-     <item row="1" column="3">
-      <widget class="QLineEdit" name="maOutput"/>
-     </item>
      <item row="1" column="2">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>    Ma = </string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>     Vc = </string>
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
+     <item row="1" column="3">
       <widget class="QLineEdit" name="vcOutput"/>
      </item>
     </layout>
@@ -214,7 +204,7 @@ background-image: url(:/newPrefix/guindaste.png);</string>
    <widget class="QPushButton" name="btnCalcular">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>160</x>
       <y>490</y>
       <width>89</width>
       <height>25</height>
@@ -222,6 +212,19 @@ background-image: url(:/newPrefix/guindaste.png);</string>
     </property>
     <property name="text">
      <string>Calcular</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>490</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gráficos</string>
     </property>
    </widget>
   </widget>
