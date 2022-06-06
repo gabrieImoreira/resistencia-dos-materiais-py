@@ -2,6 +2,7 @@ from layouts.layout import *
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
+import math
 
 
 class Aplicacao(QMainWindow, Ui_MainWindow):
@@ -23,6 +24,7 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.mca1Output.setReadOnly(1)
         self.mcb0Output.setReadOnly(1)
         self.mcb1Output.setReadOnly(1)
+        self.tnOutput.setReadOnly(1)
 
         self.graficoFc = CanvasGrafico()
         self.fcGrafico.addWidget(self.graficoFc)
@@ -33,7 +35,6 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.btnGerarGrafico.clicked.connect(self.update_graph)
 
     def update_graph(self):
-        print(self.vca0);
         if self.vca1 == 0 or self.vca1 is None:
             self.statusBar().setStyleSheet("background-color : red")
             self.statusBar().showMessage("Insira valores válidos para gerar o gŕafico.")
@@ -49,6 +50,8 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         vc = self.reacoes_de_apoio(va, vb, self.x1, self.x2)
         self.vca0, self.vca1, self.vcb0, self.vcb1 = self.forca_cortante(va, vb, vc, self.x1, self.x2)
         self.mca0, self.mca1, self.mcb0, self.mcb1 = self.momento_fletor(va, vb, self.x1, self.x2)
+        tn = self.tensao_normal(va, vb)
+        self.tnOutput.setText(str(tn))
         self.vcOutput.setText(str(vc))
         self.vca0Output.setText(str(self.vca0))
         self.vca1Output.setText(str(self.vca1))
@@ -93,6 +96,11 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         mcb1 = - vb * x2
 
         return mca0, mca1, mcb0, mcb1
+
+    def tensao_normal(self, va, vb):
+        tn = (va + vb) / (math.pi * (2.5 ** 2))
+
+        return round(tn, 2)
 
 class CanvasGrafico(FigureCanvas):
     def __init__(self, parent=None):
