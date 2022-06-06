@@ -1,6 +1,8 @@
-import time
 from layouts.layout import *
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt
+
 
 class Aplicacao(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -15,7 +17,20 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.mca1Output.setReadOnly(1)
         self.mcb0Output.setReadOnly(1)
         self.mcb1Output.setReadOnly(1)
+
+        self.grafico = Canvas_grafico()
+        self.fcGrafico.addWidget(self.grafico)
+
         self.btnCalcular.clicked.connect(self.calcular)
+        self.btnGerarGrafico.clicked.connect(self.update_graph)
+
+    def update_graph(self, x1, x2, vca0, vca1, vcb0, vcb1):
+        X = [0, x1, x1, x1 + x2]
+        Y = [vca0, vca1, vcb0, vcb1]
+        self.plt.title("Força cortante")
+        self.plt.xlabel("Tamanho em metros")
+        self.plt.plot(X, Y)
+        self.plt.show()
 
     def calcular(self):
 
@@ -71,3 +86,17 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         mcb1 = - vb * x2
 
         return mca0, mca1, mcb0, mcb1
+
+class Canvas_grafico(FigureCanvas):
+    def __init__(self, parent=None):
+        self.fig, self.ax = plt.subplots()
+        super().__init__(self.fig)
+
+        vca0 = 500
+        vca1 = 475
+        vcb0 = 200
+        vcb1 = 195
+        X = [0, 8, 8, 10]
+        Y = [vca0, vca1, vcb0, vcb1]
+        self.ax.plot(X, Y)
+        self.draw()

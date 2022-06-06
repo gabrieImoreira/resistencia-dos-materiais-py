@@ -27,12 +27,5 @@ if __name__ == '__main__':
     app.show()
     qt.exec()
 
-    vca0 = 500
-    vca1 = 475
-    vcb0 = 200
-    vcb1 = 195
-    x1 = 10
-    x2 = 2
 
-    graph_fc(x1, x2, vca0, vca1, vcb0, vcb1)
 
