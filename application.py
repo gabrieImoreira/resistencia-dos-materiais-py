@@ -5,9 +5,15 @@ import matplotlib.pyplot as plt
 
 
 class Aplicacao(QMainWindow, Ui_MainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, x1=None, x2=None, vca0=None, vca1=None, vcb0=None, vcb1=None):
         super().__init__(parent)
         super().setupUi(self)
+        self.x1 = x1
+        self.x2 = x2
+        self.vca0 = vca0
+        self.vca1 = vca1
+        self.vcb0 = vcb0
+        self.vcb1 = vcb1
         self.vcOutput.setReadOnly(1)
         self.vca0Output.setReadOnly(1)
         self.vca1Output.setReadOnly(1)
@@ -18,38 +24,40 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.mcb0Output.setReadOnly(1)
         self.mcb1Output.setReadOnly(1)
 
-        self.grafico = Canvas_grafico()
-        self.fcGrafico.addWidget(self.grafico)
+        self.graficoFc = CanvasGrafico()
+        self.fcGrafico.addWidget(self.graficoFc)
+        self.graficoMf = CanvasGrafico()
+        self.mfGrafico.addWidget(self.graficoMf)
 
         self.btnCalcular.clicked.connect(self.calcular)
         self.btnGerarGrafico.clicked.connect(self.update_graph)
 
-    def update_graph(self, x1, x2, vca0, vca1, vcb0, vcb1):
-        X = [0, x1, x1, x1 + x2]
-        Y = [vca0, vca1, vcb0, vcb1]
-        self.plt.title("Força cortante")
-        self.plt.xlabel("Tamanho em metros")
-        self.plt.plot(X, Y)
-        self.plt.show()
+    def update_graph(self):
+        print(self.vca0);
+        if self.vca1 == 0 or self.vca1 is None:
+            self.statusBar().setStyleSheet("background-color : red")
+            self.statusBar().showMessage("Insira valores válidos para gerar o gŕafico.")
+        else:
+            CanvasGrafico.update_graph(self.graficoFc, self.x1, self.x2, self.vca0, self.vca1, self.vcb0, self.vcb1)
+            CanvasGrafico.update_graph(self.graficoMf, self.x1, self.x2, self.mca0, self.mca1, self.mcb0, self.mcb1)
 
     def calcular(self):
 
         self.statusBar().setStyleSheet("background-color :")
         self.statusBar().showMessage("")
-        va, vb, x1, x2 = self.recebe_valores()
-        vc = self.reacoes_de_apoio(va, vb, x1, x2)
-        vca0, vca1, vcb0, vcb1 = self.forca_cortante(va, vb, vc, x1, x2)
-        mca0, mca1, mcb0, mcb1 = self.momento_fletor(va, vb, x1, x2)
+        va, vb, self.x1, self.x2 = self.recebe_valores()
+        vc = self.reacoes_de_apoio(va, vb, self.x1, self.x2)
+        self.vca0, self.vca1, self.vcb0, self.vcb1 = self.forca_cortante(va, vb, vc, self.x1, self.x2)
+        self.mca0, self.mca1, self.mcb0, self.mcb1 = self.momento_fletor(va, vb, self.x1, self.x2)
         self.vcOutput.setText(str(vc))
-        self.vca0Output.setText(str(vca0))
-        self.vca1Output.setText(str(vca1))
-        self.vcb0Output.setText(str(vcb0))
-        self.vcb1Output.setText(str(vcb1))
-        self.mca0Output.setText(str(mca0))
-        self.mca1Output.setText(str(mca1))
-        self.mcb0Output.setText(str(mcb0))
-        self.mcb1Output.setText(str(mcb1))
-
+        self.vca0Output.setText(str(self.vca0))
+        self.vca1Output.setText(str(self.vca1))
+        self.vcb0Output.setText(str(self.vcb0))
+        self.vcb1Output.setText(str(self.vcb1))
+        self.mca0Output.setText(str(self.mca0))
+        self.mca1Output.setText(str(self.mca1))
+        self.mcb0Output.setText(str(self.mcb0))
+        self.mcb1Output.setText(str(self.mcb1))
 
     def recebe_valores(self):
         try:
@@ -63,7 +71,6 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
             self.statusBar().setStyleSheet("background-color : red")
             self.statusBar().showMessage("Digite apenas números inteiros ou números no formato americano.")
             return False, False, False, False
-
 
     def forca_cortante(self, va, vb, vc, x1, x2):
         vca0 = (vc - va) * 0  # para x = 0
@@ -87,16 +94,17 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
 
         return mca0, mca1, mcb0, mcb1
 
-class Canvas_grafico(FigureCanvas):
+class CanvasGrafico(FigureCanvas):
     def __init__(self, parent=None):
         self.fig, self.ax = plt.subplots()
         super().__init__(self.fig)
 
-        vca0 = 500
-        vca1 = 475
-        vcb0 = 200
-        vcb1 = 195
-        X = [0, 8, 8, 10]
+        self.draw()
+
+    def update_graph(self, x1, x2, vca0, vca1, vcb0, vcb1):
+        X = [0, x1, x1, x1 + x2]
         Y = [vca0, vca1, vcb0, vcb1]
+        self.ax.clear()
         self.ax.plot(X, Y)
         self.draw()
+
