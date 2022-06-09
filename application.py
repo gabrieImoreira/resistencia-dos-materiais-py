@@ -25,6 +25,7 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.mcb0Output.setReadOnly(1)
         self.mcb1Output.setReadOnly(1)
         self.tnOutput.setReadOnly(1)
+        self.tauOutput.setReadOnly(1)
 
         self.graficoFc = CanvasGrafico()
         self.fcGrafico.addWidget(self.graficoFc)
@@ -50,6 +51,7 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         vc = self.reacoes_de_apoio(va, vb, self.x1, self.x2)
         self.vca0, self.vca1, self.vcb0, self.vcb1 = self.forca_cortante(va, vb, vc, self.x1, self.x2)
         self.mca0, self.mca1, self.mcb0, self.mcb1 = self.momento_fletor(va, vb, self.x1, self.x2)
+        tau = self.cisalhamento(va)
         tn = self.tensao_normal(va, vb)
         self.tnOutput.setText(str(tn))
         self.vcOutput.setText(str(vc))
@@ -61,6 +63,8 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
         self.mca1Output.setText(str(self.mca1))
         self.mcb0Output.setText(str(self.mcb0))
         self.mcb1Output.setText(str(self.mcb1))
+        self.tauOutput.setText(str(tau))
+
 
     def recebe_valores(self):
         try:
@@ -76,10 +80,10 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
             return False, False, False, False
 
     def forca_cortante(self, va, vb, vc, x1, x2):
-        vca0 = (vc - va) * 0  # para x = 0
-        vca1 = (vc - va) * x1  # para x = x1
-        vcb0 = (vc - vb) * 0  # para x = 0
-        vcb1 = (vc - vb) * x2  # para x = 1
+        vca0 = vc - (va * 0)  # para x = 0
+        vca1 = vc - (va * x1)  # para x = x1
+        vcb0 = vc - (vb * 0)  # para x = 0
+        vcb1 = vc - (vb * x2)  # para x = 1
 
         return vca0, vca1, vcb0, vcb1
 
@@ -102,6 +106,11 @@ class Aplicacao(QMainWindow, Ui_MainWindow):
 
         return round(tn, 2)
 
+    def cisalhamento(self, va):
+        tau = (4 * va) / (4 * math.pi * (0.1 ** 2))
+
+        return round(tau, 2)
+
 class CanvasGrafico(FigureCanvas):
     def __init__(self, parent=None):
         self.fig, self.ax = plt.subplots()
@@ -109,9 +118,9 @@ class CanvasGrafico(FigureCanvas):
 
         self.draw()
 
-    def update_graph(self, x1, x2, vca0, vca1, vcb0, vcb1):
+    def update_graph(self, x1, x2, v0, v1, v2, v3):
         X = [0, x1, x1, x1 + x2]
-        Y = [vca0, vca1, vcb0, vcb1]
+        Y = [v0, v1, v2, v3]
         self.ax.clear()
         self.ax.plot(X, Y)
         self.draw()
