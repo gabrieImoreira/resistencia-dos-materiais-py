@@ -2,7 +2,8 @@
 
 Para rodar o programa é necessário instalar o python na máquina, através dos links:
 
-LInux/Mac - https://python-guide-pt-br.readthedocs.io/pt_BR/latest/starting/install3/linux.html
+Linux/Mac - https://python-guide-pt-br.readthedocs.io/pt_BR/latest/starting/install3/linux.html
+
 Windows - https://www.python.org/downloads/
 
 Após o download, é necessário instalar um editor de texto a sua escolha. 
