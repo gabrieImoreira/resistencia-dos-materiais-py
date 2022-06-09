@@ -1,7 +1,6 @@
 # resistencia-dos-materiais-py - Projeto para o curso Engenharia Elétrica da Universidade São Judas Tadeu
 
 Esse projeto utiliza principalmente as lib PyQT5 para a interface gráfica e a lib Matplotlib para a criação dos gráficos.
-![Text](https://github.com/gabrieImoreira/resistencia-dos-materiais-py/blob/main/layouts/calculos-programa.jpg)
 
 Para rodar o programa é necessário instalar o python na máquina, através dos links:
 
@@ -23,3 +22,29 @@ Feito isso, digitar no terminal o comando para executar o programa:
 ```
 python3 main.py
 ```
+
+### Estrutura do código
+
+The directory structure given by the template:
+
+```
+├── venv
+├── layouts
+|   └── guindaste.png
+│   └── layout.py
+├── application.py
+├── main.py
+```
+
+onde:
+where
+
+- `venv`: Ambiente virtual do python
+- `layouts/`: Pasta contendo a imagem utilizada do programa e o arquivo .py de interface gráfica
+- `application.py`: Arquivo contendo as classes e funções de cálculo do programa
+- `main.py: arquivo executável
+
+
+### Imagens do programa:
+![Text](https://github.com/gabrieImoreira/resistencia-dos-materiais-py/blob/main/layouts/calculos-programa.jpg)
+![Text](https://github.com/gabrieImoreira/resistencia-dos-materiais-py/blob/main/layouts/graficos-programa.jpg)
