@@ -42,7 +42,7 @@ where
 - `venv`: Ambiente virtual do python
 - `layouts/`: Pasta contendo a imagem utilizada do programa e o arquivo .py de interface gráfica
 - `application.py`: Arquivo contendo as classes e funções de cálculo do programa
-- `main.py: arquivo executável
+- `main.py`: arquivo executável
 
 
 ### Imagens do programa:
