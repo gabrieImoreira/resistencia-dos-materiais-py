@@ -1,4 +1,4 @@
-# resistencia-dos-materiais-py - Projeto para o curso Engenharia Elétrica da Universidade São Judas Tadeu
+# resistencia-dos-materiais-py - Projeto para o curso de Engenharia Elétrica da Universidade São Judas Tadeu
 
 Esse projeto utiliza principalmente as lib PyQT5 para a interface gráfica e a lib Matplotlib para a criação dos gráficos.
 
