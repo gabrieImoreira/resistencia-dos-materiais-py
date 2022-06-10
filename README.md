@@ -20,7 +20,7 @@ a instalação das bibliotecas através do gerenciador de pacotes pip:
 Feito isso, digitar no terminal o comando para executar o programa:
 
 ```
-python3 main.py
+>$ python3 main.py
 ```
 
 ### Estrutura do código
